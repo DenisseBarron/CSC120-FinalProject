@@ -8,6 +8,6 @@ public class SurvivalGame {
 
         //Introduction to the game
         System.out.println("You are left behind by your hinking group");
-        System.out.println("You are left behind by your hinking group");
+        System.out.println("You have to decide what to do next");
     })
 }
