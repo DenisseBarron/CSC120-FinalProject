@@ -6,7 +6,7 @@ public class SurvivalGame {
 
     public static void main(String[] args){
          //Introduction to the game
-         System.out.println("Day 1");
+         System.out.println("Day...");
          System.out.println("You are left behind by your hinking group in a hunted campsite");
          System.out.println("You have to decide what to do next in order to survive");
          System.out.println("You need to collect resources to survuve, but you can only choose three.");
