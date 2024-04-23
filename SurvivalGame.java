@@ -1,11 +1,8 @@
 import java.util.Scanner;
 
 public class SurvivalGame {
-    /**
-     * main method that runs the game
-     */
-    private static final Scanner scanner = new Scanner(System.in);
-    private static int itemsCollected = 0;
+    private static Scanner scanner = new Scanner(System.in);
+    public static int itemsCollected = 0;
 
     public static void main(String[] args){
          //Introduction to the game
@@ -52,6 +49,6 @@ public class SurvivalGame {
             }
          }
          //Display message when all items are collected
-         System.out.println("Congradulations! You have collected all necessary items to curvive.");
+         System.out.println("Congradulations! You have collected all necessary items to survive.");
      }
 }
