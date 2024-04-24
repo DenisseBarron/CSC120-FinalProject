@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.HashMap;
+
 
 public class Tent {
     private static final Scanner scanner = new Scanner(System.in);
