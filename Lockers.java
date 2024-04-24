@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.util.HashMap;
-
 
 public class Lockers {
     private static final Scanner scanner = new Scanner(System.in);

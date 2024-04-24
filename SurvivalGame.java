@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.HashMap;
 
 public class SurvivalGame {
     private static Scanner scanner = new Scanner(System.in);
