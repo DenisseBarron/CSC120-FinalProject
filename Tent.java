@@ -3,7 +3,7 @@ import java.util.Hashtable;
 
 public class Tent {
     private static final Scanner scanner = new Scanner(System.in);
-
+    
     //Method to explore the Tent location
     public static void explore() {
         System.out.println("You are inside the tent. You noticed a flashlight left behind.");

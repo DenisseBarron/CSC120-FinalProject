@@ -4,11 +4,13 @@ public class User {
     String name;
     ArrayList<String> backpack;
     int health;
+    String location;
 
     public User(String name){
         this.name = name;
         this.backpack = new ArrayList <>();
         this.health = 10;
+        this.location = "location";
     }
 
     public void userDetails (){
