@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.HashMap;
+import java.util.Hashtable;
 
 public class Lake {
     private static final Scanner scanner = new Scanner(System.in);
