@@ -2,21 +2,38 @@ import java.util.Scanner;
 
 public class SurvivalGame {
     private static Scanner scanner = new Scanner(System.in);
-    private static int itemsCollected = 0;
+    public static int itemsCollected = 0;
     private static int health = 10;
     private static String userName;
 
 
     public static void main(String[] args){
          //Introduction to the game
-         System.out.println("Day 1");
-         System.out.println("You are left behind by your hinking group in a hunted campsite");
-         System.out.println("You need to collect resources to survuve, but you can only choose three.");
+         Scanner userInput = new Scanner(System.in);
 
-         //Ask User for name
-         System.out.println("What's your name?");
-         userName = scanner.nextLine();
-         System.out.println("Hello " + userName + "! Let's start your survival journey!");
+         // Storage for user's responses
+         String userResponse = "";
+
+         System.out.println("Day 1");
+         System.out.println("You wake up to the smell of rain.\n" + //
+                 "There is a chill in the air unlike any other.\n" + //
+                 "There's something else too... it's quiet... too quiet.\n" + //
+                 "Where is everyone?");
+         System.out.println("Type 'yes' to continue...");
+         userResponse = userInput.nextLine().toUpperCase(); 
+         if (userResponse.equals("YES")){
+             System.out.println("You are left behind by your hinking group in a haunted campsite.");
+             System.out.println("You need to collect resources to survive, but you can only choose three.");
+             //Ask User for name
+             System.out.println("What's your name?");
+             userName = scanner.nextLine();
+             System.out.println("Hello " + userName + "! Let's start your survival journey!");
+             //User you = new User(userResponse);
+             //you.userDetails();
+         } else {
+             System.out.println("Try again...");
+         }
+                 userInput.close();
 
          //Main loop to choose locations until all items are collected
          while (itemsCollected < 3 && health > 0) {
