@@ -33,6 +33,7 @@ public class SurvivalGame {
              System.out.println("Hello brave user. What's your name?");
              userResponse = userInput.nextLine();
              User user = new User(userResponse);
+             //Kitchen userKitchen = new Kitchen(user);
              user.userDetails();
              System.out.println("Your hiking group left you behind in this cold, haunted, and lifeless campsite. \n"+
              "The choices you make, or the choices you don’t make, will decide whether or not you make it out alive. \n"+
