@@ -27,7 +27,10 @@ public class Kitchen {
             "You can only pick one can for now. Which one would you take?");
             choice = scanner.next();
 
-            if (choice.equalsIgnoreCase("corn"));
+            if (choice.equalsIgnoreCase("corn") || choice.equalsIgnoreCase("fruit") || choice.equalsIgnoreCase("pasta") ||choice.equalsIgnoreCase("marshmallow fluff") ||choice.equalsIgnoreCase("spam")){
+                User you = new User("user");
+                you.userAddIventory(choice);
+            }
             System.out.println();            
             SurvivalGame.itemsCollected++; //Increment items collected counter in main class
         }
