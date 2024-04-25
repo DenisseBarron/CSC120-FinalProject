@@ -6,15 +6,16 @@ public class Lake {
 
     //Method to explore the firepit location
     public static void explore() {
-        System.out.println("You are at the firepit. You noticed some matches left behind. Would you like to pick them up? (yes/no)");
+        System.out.println("You are by the lake. It is cold and humid but you really need water. \n" +
+        "Would you like to pick them up? (yes/no)");
         String choice = scanner.next();
 
         //handle user's choice
         if (choice.equalsIgnoreCase("yes")){
-            System.out.println("Item collected: Matches");
+            System.out.println("Item collected: Water");
             SurvivalGame.itemsCollected++; //Increment items collected counter in main class
         }
 
-        System.out.println("Returning to start.");
+        System.out.println("Choose a resource...");
 }
 }
