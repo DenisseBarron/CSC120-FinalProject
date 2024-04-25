@@ -17,7 +17,6 @@ public class Kitchen {
         "There is a large cooler in the corner. \n" +
         "Would you like to approach it? (yes/no)");
         String choice = scanner.next();
-
         //handle user's choice
         if (choice.equalsIgnoreCase("yes")){
             System.out.println("You walk towards it and open it \n" +
@@ -26,19 +25,38 @@ public class Kitchen {
             "You find a couple cans of corn, fruit, pasta, marshmallow fluff, and spam in the pantry \n" +
             "Would you like to take one?");
             choice = scanner.next();
-
-            if (choice.equalsIgnoreCase("yes"));
-            System.out.println("You can only pick one can for now. Which one would you take?");
-            choice = scanner.next();
-
-            if (choice.equalsIgnoreCase("corn") || choice.equalsIgnoreCase("fruit") || choice.equalsIgnoreCase("pasta") ||choice.equalsIgnoreCase("marshmallow fluff") ||choice.equalsIgnoreCase("spam")){
-                User you = new User("user"); 
-                you.addInventory(choice); // isn't adding anything to first instance of User created, unsure how to fix this
+            if (choice.equalsIgnoreCase("yes")){
+                System.out.println("You can only pick one can for now. Which one would you take?");
+                choice = scanner.next();
+                if (choice.equalsIgnoreCase("corn") || choice.equalsIgnoreCase("fruit") || choice.equalsIgnoreCase("pasta") ||choice.equalsIgnoreCase("marshmallow fluff") ||choice.equalsIgnoreCase("spam")){
+                    User you = new User("user"); 
+                    you.addInventory(choice); // isn't adding anything to first instance of User created, unsure how to fix this
+                    SurvivalGame.itemsCollected++; //Increment items collected counter in main class
+                }
+                else {
+                    System.out.println("That's not an option.");
+                }
+            } else {
+                 System.out.println("Returning to start.");
             }
-            System.out.println();            
-            SurvivalGame.itemsCollected++; //Increment items collected counter in main class
+            
+        } else {
+            System.out.println("You find a couple cans of corn, fruit, pasta, marshmallow fluff, and spam in the pantry \n" +
+            "Would you like to take one?");
+            choice = scanner.next();
+            if (choice.equalsIgnoreCase("yes")){
+                System.out.println("You can only pick one can for now. Which one would you take?");
+                choice = scanner.next();
+                if (choice.equalsIgnoreCase("corn") || choice.equalsIgnoreCase("fruit") || choice.equalsIgnoreCase("pasta") ||choice.equalsIgnoreCase("marshmallow fluff") ||choice.equalsIgnoreCase("spam")){
+                    User you = new User("user"); 
+                    you.addInventory(choice); // isn't adding anything to first instance of User created, unsure how to fix this
+                    SurvivalGame.itemsCollected++; //Increment items collected counter in main class
+                } else {
+                    System.out.println("That's not an option.");
+                } 
+            } else {
+                System.out.println("Returning to start.");
+            }
         }
-
-        System.out.println("Choose place to explore...");
-}
+    }
 }
