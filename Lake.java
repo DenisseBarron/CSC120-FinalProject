@@ -12,7 +12,7 @@ public class Lake {
 
         //handle user's choice
         if (choice.equalsIgnoreCase("yes")){
-            System.out.println("Item collected: Water");
+            System.out.println("Item collected: Water"); // needs to be added to inventory
             SurvivalGame.itemsCollected++; //Increment items collected counter in main class
         }
 

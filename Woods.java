@@ -6,12 +6,15 @@ public class Woods {
 
     //Method to explore the firepit location
     public static void explore() {
-        System.out.println("You are at the firepit. You noticed some matches left behind. Would you like to pick them up? (yes/no)");
+        System.out.println("You are inside the woods. \n" +
+        "You noticed a shadow pass behind you but decide to ignore it and continue walking... \n" +
+        "You see some wood that seems to be dry \n" +
+        "Would you like to pick it up? (yes/no)");
         String choice = scanner.next();
 
         //handle user's choice
         if (choice.equalsIgnoreCase("yes")){
-            System.out.println("Item collected: Matches");
+            System.out.println("Item collected: Woods"); // needs to be added to inventory
             SurvivalGame.itemsCollected++; //Increment items collected counter in main class
         }
 

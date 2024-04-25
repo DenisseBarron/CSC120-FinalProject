@@ -15,7 +15,12 @@ public class Backstage {
         if (choice.equalsIgnoreCase("yes")){
             System.out.println("You are in the backstage and noticed a large old trunk that is closed. \n" +
             "As you are about to get close t the trunk, something catches your eye...a snipet of an old news paper. \n" +
-            "The headline reads '19 year old man disapears at Campers Hollow Camp'");
+            "The headline reads '19 year old man disapears at Campers Hollow Camp' \n" +
+            "Would you like to continue reading? (yes/no)");
+            choice = scanner.next();
+
+            if (choice.equalsIgnoreCase("yes"));
+            System.out.println("You continue reading...");
             // SurvivalGame.itemsCollected++; //Increment items collected counter in main class
         }
 

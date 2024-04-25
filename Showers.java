@@ -14,7 +14,7 @@ public class Showers {
 
         //handle user's choice
         if (choice.equalsIgnoreCase("yes")){
-            System.out.println("Item collected: Dirty Water");
+            System.out.println("Item collected: Dirty Water"); // needs to be added to inventory
             SurvivalGame.itemsCollected++; //Increment items collected counter in main class
         }
 

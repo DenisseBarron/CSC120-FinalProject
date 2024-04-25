@@ -11,7 +11,7 @@ public class Lockers {
 
         //handle user's choice
         if (choice.equalsIgnoreCase("yes")){
-            System.out.println("Item collected: Warm clothes");
+            System.out.println("Item collected: Warm clothes"); // needs to be added to inventory
             SurvivalGame.itemsCollected++; //Increment items collected counter in main class
         }
 
