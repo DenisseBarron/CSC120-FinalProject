@@ -28,6 +28,8 @@ public class SurvivalGame {
          System.out.println("Type 'yes' to continue...");
          userResponse = userInput.nextLine().toUpperCase();
 
+         Kitchen userKitchen = new Kitchen();
+
          if (userResponse.equals("YES")) {
              System.out.println("DAY 1");
              System.out.println("Hello brave user. What's your name?");
@@ -47,7 +49,7 @@ public class SurvivalGame {
                 //Handle user's choice based on location
                 switch (choice) {
                     case 1:
-                        Kitchen.explore(); //Call explore method in Kitchen class
+                        userKitchen.explore(); //Call explore method in Kitchen class
                         break;
                     case 2:
                         Woods.explore();

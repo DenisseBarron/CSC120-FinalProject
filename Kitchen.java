@@ -11,7 +11,7 @@ public class Kitchen {
     }
 
     //Method to explore the kitchen location
-    public static void explore() {
+    public void explore() {
         //location.put("Kitchen", false); --> work in progress: trying to update user's location using a Hashtable
         System.out.println("You are inside the kitchen. \n" +
         "There is a large cooler in the corner. \n" +
