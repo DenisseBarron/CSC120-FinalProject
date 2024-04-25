@@ -6,7 +6,8 @@ public class Firepit {
 
     //Method to explore the firepit location
     public static void explore() {
-        System.out.println("You are at the firepit. You noticed some matches left behind. Would you like to pick them up? (yes/no)");
+        System.out.println("You are at the firepit. You noticed some matches left behind. \n" +
+        "Would you like to pick them up? (yes/no)");
         String choice = scanner.next();
 
         //handle user's choice
@@ -15,6 +16,6 @@ public class Firepit {
             SurvivalGame.itemsCollected++; //Increment items collected counter in main class
         }
 
-        System.out.println("Returning to start.");
+        System.out.println("Choose a resource...");
     }
 }
