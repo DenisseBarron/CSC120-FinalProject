@@ -13,10 +13,10 @@ public class Backstage {
 
         //handle user's choice
         if (choice.equalsIgnoreCase("yes")){
-            System.out.println("You are in the backstage and noticed a large old trunk that is open. \n" +
+            System.out.println("You are in the backstage and noticed a large old trunk that is closed. \n" +
             "As you are about to get close t the trunk, something catches your eye...a snipet of an old news paper. \n" +
-            "The headline reads '19 year old man disapears at blah blah Camp'");
-            SurvivalGame.itemsCollected++; //Increment items collected counter in main class
+            "The headline reads '19 year old man disapears at Campers Hollow Camp'");
+            // SurvivalGame.itemsCollected++; //Increment items collected counter in main class
         }
 
         System.out.println("Choose a resource...");
