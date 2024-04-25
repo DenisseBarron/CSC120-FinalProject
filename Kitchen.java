@@ -29,7 +29,7 @@ public class Kitchen {
 
             if (choice.equalsIgnoreCase("corn") || choice.equalsIgnoreCase("fruit") || choice.equalsIgnoreCase("pasta") ||choice.equalsIgnoreCase("marshmallow fluff") ||choice.equalsIgnoreCase("spam")){
                 User you = new User("user"); 
-                you.userAddIventory(choice); // isn't adding anything to first instance of User created, unsure how to fix this
+                you.addInventory(choice); // isn't adding anything to first instance of User created, unsure how to fix this
             }
             System.out.println();            
             SurvivalGame.itemsCollected++; //Increment items collected counter in main class
