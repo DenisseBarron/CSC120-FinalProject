@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.net.SocketPermission;
+import java.net.SocketTimeoutException;
 import java.util.Hashtable;
 
 public class Kitchen {
@@ -24,7 +26,11 @@ public class Kitchen {
             "The smell of rotten meat fills the room and flies emerge from the cooler \n" +
             "Startled you close the cooler and take a step back, and continue to look for other food \n" +
             "You find a couple cans of corn, fruit, pasta, marshmallow fluff, and spam in the pantry \n" +
-            "You can only pick one can for now. Which one would you take?");
+            "Would you like to take one?");
+            choice = scanner.next();
+
+            if (choice.equalsIgnoreCase("yes"));
+            System.out.println("You can only pick one can for now. Which one would you take?");
             choice = scanner.next();
 
             if (choice.equalsIgnoreCase("corn") || choice.equalsIgnoreCase("fruit") || choice.equalsIgnoreCase("pasta") ||choice.equalsIgnoreCase("marshmallow fluff") ||choice.equalsIgnoreCase("spam")){
