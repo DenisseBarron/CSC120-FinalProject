@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.net.SocketPermission;
-import java.net.SocketTimeoutException;
 import java.util.Hashtable;
 
 public class Kitchen {
