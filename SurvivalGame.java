@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.Hashtable;
+// import java.util.Hashtable;
 
 public class SurvivalGame {
     /**
@@ -32,8 +32,8 @@ public class SurvivalGame {
              System.out.println("DAY 1");
              System.out.println("Hello brave user. What's your name?");
              userResponse = userInput.nextLine();
-             User you = new User(userResponse);
-             you.userDetails();
+             User user = new User(userResponse);
+             user.userDetails();
              System.out.println("Your hiking group left you behind in this cold, haunted, and lifeless campsite. \n"+
              "The choices you make, or the choices you don’t make, will decide whether or not you make it out alive. \n"+
              "Choose wisely and stay alert. We suggest you begin by collecting resources to survive. \n" + 

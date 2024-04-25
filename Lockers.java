@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.Hashtable;
+// import java.util.Hashtable;
 
 public class Lockers {
     private static final Scanner scanner = new Scanner(System.in);
