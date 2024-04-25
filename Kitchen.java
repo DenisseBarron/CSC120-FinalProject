@@ -10,9 +10,9 @@ public class Kitchen {
         location.put("Kitchen", false);
     }
 
-    //Method to explore the firepit location
+    //Method to explore the kitchen location
     public static void explore() {
-        //location.put("Kitchen", false);
+        //location.put("Kitchen", false); --> work in progress: trying to update user's location using a Hashtable
         System.out.println("You are inside the kitchen. \n" +
         "There is a large cooler in the corner. \n" +
         "Would you like to approach it? (yes/no)");
@@ -28,8 +28,8 @@ public class Kitchen {
             choice = scanner.next();
 
             if (choice.equalsIgnoreCase("corn") || choice.equalsIgnoreCase("fruit") || choice.equalsIgnoreCase("pasta") ||choice.equalsIgnoreCase("marshmallow fluff") ||choice.equalsIgnoreCase("spam")){
-                User you = new User("user");
-                you.userAddIventory(choice);
+                User you = new User("user"); 
+                you.userAddIventory(choice); // isn't adding anything to first instance of User created, unsure how to fix this
             }
             System.out.println();            
             SurvivalGame.itemsCollected++; //Increment items collected counter in main class
