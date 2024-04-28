@@ -17,9 +17,13 @@ public class User {
         System.out.println(name + ", you current health level is of: " + health + " hearts");
     }
     public void useraddInventory (String item){
-        //item.toUpperCase();
         backpack.add(item);
-        System.out.println(item.toUpperCase() + " has been added to your inventory.");
+    }
+    public void printInventory(){
+        System.out.println("Inventory:");
+        for (String item : backpack){
+            System.out.println("- " + item);
+        }
     }
 }
 

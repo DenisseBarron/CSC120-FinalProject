@@ -1,23 +1,15 @@
-import java.util.Scanner;
+// import java.util.Scanner;
 // import java.util.Hashtable;
 
 public class Showers {
-    private static final Scanner scanner = new Scanner(System.in);
+   // private static final Scanner scanner = new Scanner(System.in);
 
     //Method to explore the firepit location
-    public static void explore() {
+    public void explore(User user) {
         System.out.println("You are inside the showers.");
         System.out.println("You noticed the showers seem to be working and try to collect water.");
         System.out.println("Oh no! The water is dirty water");
-        System.out.println("Would you still like to collect it? (yes/no)");
-        String choice = scanner.next();
-
-        //handle user's choice
-        if (choice.equalsIgnoreCase("yes")){
-            System.out.println("Item collected: Dirty Water"); // needs to be added to inventory
-            SurvivalGame.itemsCollected++; //Increment items collected counter in main class
-        }
-
-        System.out.println("Returning to start.");
+        System.out.println("You will have to find water somewhere else.");
+        return; 
     }
 }

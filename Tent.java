@@ -5,17 +5,19 @@ public class Tent {
     private static final Scanner scanner = new Scanner(System.in);
     
     //Method to explore the Tent location
-    public static void explore() {
+    public boolean explore(User user) {
         System.out.println("You are inside the tent. You noticed a flashlight left behind.");
         System.out.println("Would you like to pick it up? (yes/no)");
         String choice = scanner.next();
 
         //handle user's choice
         if (choice.equalsIgnoreCase("yes")){
-            System.out.println("Item collected: Flashlight"); // needs to be added to inventory
-            SurvivalGame.itemsCollected++; //Increment items collected counter in main class
+            user.useraddInventory("Flashlight");
+            System.out.println("Flashlight has been added to your inventory.");
+            return true; // Flashlight collected
+        } else {
+        System.out.println("You decided to not pick up the flashlight...");
+        return false; // Flashlight not collected
         }
-
-        System.out.println("Returning to start.");
     }
 }

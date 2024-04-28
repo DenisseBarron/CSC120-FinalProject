@@ -5,17 +5,20 @@ public class Firepit {
     private static final Scanner scanner = new Scanner(System.in);
 
     //Method to explore the firepit location
-    public static void explore() {
+    public boolean explore(User user) {
         System.out.println("You are at the firepit. You noticed some matches left behind. \n" +
         "Would you like to pick them up? (yes/no)");
+
         String choice = scanner.next();
 
         //handle user's choice
         if (choice.equalsIgnoreCase("yes")){
-            System.out.println("Item collected: Matches"); // needs to be added to inventory
-            SurvivalGame.itemsCollected++; //Increment items collected counter in main class
+            user.useraddInventory("Matches");
+            System.out.println("Matches have been added to your inventory.");
+            return true; // Matches collected
+        } else {
+        System.out.println("You decided to not pick the matches...");
+        return false; // Matches not collected
         }
-
-        System.out.println("Choose a resource...");
     }
 }
