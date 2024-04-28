@@ -65,11 +65,10 @@ public class Kitchen {
     }
     private boolean isValidItem(String item){
         return item.equalsIgnoreCase("corn") ||
-                item.equalsIgnoreCase("fruit") ||
-                item.equalsIgnoreCase("pasta") ||
-                item.equalsIgnoreCase("marshmallows") ||
-                item.equalsIgnoreCase("spam");
-
+               item.equalsIgnoreCase("fruit") ||
+               item.equalsIgnoreCase("pasta") ||
+               item.equalsIgnoreCase("marshmallows") ||
+               item.equalsIgnoreCase("spam"); 
     }
 }
  

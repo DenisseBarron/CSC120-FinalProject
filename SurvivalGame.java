@@ -102,10 +102,153 @@ public class SurvivalGame {
              user.printInventory();
 
              //Narrative for day two
-             System.out.println("Time to sleep. We will see you in day two...");
+             exploreDayTwo(user, scanner);
+
+             System.out.println("It is time to sleep after an eventful day...\n"+
+             "Here is your update on helath and inventory");
+             user.userDetails();
+             user.printInventory();
+             System.out.println("Day 3 is waiting...");
          } else {
              System.out.println("OK then...");
          }
          userInput.close();
+         scanner.close();
      }
+     public static void exploreDayTwo(User user, Scanner scanner) {
+        System.out.println("DAY 2");
+        System.out.println("You start to feel hungry...");
+
+        // Check if user needs wood
+        if (!user.hasItem("Wood")){
+            System.out.println("You are feeling hungry but you need wood for cooking. \n" +
+            "You decide to explore the woods to collect wood for fire");
+            user.useraddInventory("Wood");
+
+            //Encounter wild animal
+            System.out.println("While collecting wood, you encounter a wild animal! \n"+
+            "It attacks you but you eventually fight it off");
+            user.decreaseHealth(2); //Lose 2 hearts due to animal attack
+        }
+
+        // Check if user needs matches
+        if (!user.hasItem("Matches")){
+            System.out.println("You are feeling hungry but need need matches to start a fire for cooking. \n" +
+            "You decide to explore the firepit to find left over macthes.");
+            user.useraddInventory("Matches");
+
+            // Stepping on a sharp piece of wood
+            System.out.println("While searching for matches, you accidentally step in a sharp piece of wood.");
+            user.decreaseHealth(1); // Lose 1 heart due to injury
+        }
+
+        // Check if user needs food
+        if (!user.hasFood()){
+            System.out.println("You are hungry but you need food. Let's explore the kitchen.");
+            exploreKitchen(user, scanner);
+        }
+
+        // Cook food if all necessary items are available
+        if (user.hasItem("Wood") && user.hasItem("Matches") && user.hasFood()){
+            String foodType = chooseFoodType(user, scanner);
+            if (foodType != null){
+                int healthGain = user.calculateHealthGain(foodType);
+                user.increaseHealth(healthGain);
+                System.out.println("You cooked " + foodType + " . Health increased by " + healthGain + " hearts.");
+            }
+        }
+
+        // Start fire event
+        if (user.hasItem("Wood") && user.hasItem ("Matches")){
+            boolean hasWater = user.hasItem("Water");
+            System.out.println("A fire has started!");
+            handleFireEvent(user, hasWater);
+        }
+     }
+
+     //Method to explore the kitchen and collect food
+     public static void exploreKitchen(User user, Scanner scanner){
+        boolean validChoice = false;
+        
+        while(!validChoice){
+            System.out.println("You are in the kitchen... \n" +
+            "You find a couple cans of food in the pantry. \n" +
+            "Which one would you like to take? (corn/fruit/pasta/marshmallows/spam)");
+
+            String choice = scanner.next().trim().toLowerCase();
+
+            if (isValidItem(choice)){
+                user.useraddInventory(choice);
+                System.out.println(choice.toUpperCase() + " has been added to your inventory.");
+                validChoice = true; // Set validChoice to true to exit loop
+            } else {
+                System.out.println("That is not a valid option. Try again");
+            } 
+        }
+     }
+
+        // private method to validate food item selection
+        private static boolean isValidItem(String choice){
+            return choice.equalsIgnoreCase("corn") ||
+            choice.equalsIgnoreCase("fruit") ||
+            choice.equalsIgnoreCase("pasta") ||
+            choice.equalsIgnoreCase("marshmallows") ||
+            choice.equalsIgnoreCase("spam");
+        }
+
+        // Method to choose a food item from inventory
+        public static String chooseFoodType(User user, Scanner scanner) {
+            System.out.println("Choose a food item from your inventory:");
+            user.printInventory();
+        
+            String chosenFood = null;
+        
+            while (chosenFood == null) {
+                System.out.println("Enter the food item you want to cook: ");
+        
+                // Consume any leftover newline characters
+                if (scanner.hasNextLine()) {
+                    scanner.nextLine(); // Consume newline
+                }
+        
+                String input = scanner.nextLine().trim().toLowerCase();
+        
+                if (!input.isEmpty()) {
+                    chosenFood = input;
+        
+                    if (!user.hasItem(chosenFood)) {
+                        System.out.println("You do not have " + chosenFood + " in your inventory.");
+                        chosenFood = null; // Reset chosenFood to null to continue loop
+                    } else {
+                        break; // Exit loop if valid food item is chosen
+                    }
+                } else {
+                    System.out.println("Invalid input. Please try again.");
+                }
+            }
+        
+            return chosenFood;
+        }
+
+        //Method to handle fire event
+        public static void handleFireEvent(User user, boolean hasWater){
+            if (hasWater) {
+                System.out.println("You have water in your inventory. Do you want to use it to extinguish the fire? (yes/no)");
+                String choice =scanner.nextLine().trim().toLowerCase();
+
+                if (choice.equals("yes")){
+                    user.removeItem("Water");
+                    System.out.println("You used water to extinguish the fire. It is no longer in your inventory.");
+            } else {
+                System.out.println("You chose not to use water. Instead, you have to fan the fire out, causing you to lose energy");
+                user.decreaseHealth(1); // Lose 1 heart due to exhaustion from fanning
+            }
+        } else {
+            System.out.println("You do not have water to extinguish the fire... \n" +
+            "you now have to fan the fire out, causing you to lose energy");
+            user.decreaseHealth(1); // Lose 1 heart due to exhaustion from faning
+        }
+    }
 }
+
+ 
