@@ -1,127 +1,137 @@
 import java.util.Scanner;
-// import java.util.Hashtable;
 
 public class SurvivalGame {
-    /**
-     * main method that runs the game
-     */
     private static final Scanner scanner = new Scanner(System.in);
     public static final int MAX_ITEMS = 3;
 
-    public static void main(String[] args){
-         //Introduction to the game
-         System.out.println("**");
-         System.out.println("SURVIVAL");
-         System.out.println("**");
+    public static void main(String[] args) {
+        // Introduction to the game
+        System.out.println("**");
+        System.out.println("SURVIVAL");
+        System.out.println("**");
 
-         Scanner userInput = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
 
-         // Instructions are sometimes helpful
-         System.out.println("You wake up to the smell of rain.");
-         System.out.println("There is a chill in the air unlike no other.");
-         System.out.println("There's something else too... it's quiet... too quiet.");
-         System.out.println("Where is everyone?");
-         System.out.println("Type 'yes' to continue...");
-         String userResponse = userInput.nextLine().toUpperCase();
+        // Game initialization
+        System.out.println("You wake up to the smell of rain.");
+        System.out.println("There is a chill in the air unlike no other.");
+        System.out.println("There's something else too... it's quiet... too quiet.");
+        System.out.println("Where is everyone?");
+        System.out.println("Type 'yes' to continue...");
+        String userResponse = userInput.nextLine().toUpperCase();
 
-         if (userResponse.equals("YES")) {
-             System.out.println("DAY 1");
-             System.out.println("Hello brave user. What's your name?");
-             String userName = userInput.nextLine();
-             User user = new User(userName);
-             user.userDetails();
+        if (userResponse.equals("YES")) {
+            User user = initializeUser(userInput);
 
-             System.out.println("Your hiking group left you behind in this cold, haunted, and lifeless campsite. \n"+
-             "The choices you make, or the choices you don’t make, will decide whether or not you make it out alive. \n"+
-             "Choose wisely and stay alert. We suggest you begin by collecting resources to survive. \n" + 
-             "However, you’re only allowed to store three. Again, choose wisely. Good luck. ");
+            // Day 1
+            System.out.println("DAY 1");
+            executeDayOne(user);
 
-             int itemsCollected = 0;
+            // Day 2
+            System.out.println("DAY 2");
+            executeDayTwo(user);
 
-             //Main loop to choose locations until all items are collected
-             while (itemsCollected < MAX_ITEMS) {
-                //User choose a location
-                System.out.println("Choose a place: (1) Kitchen, (2) Woods, (3) Backstage, (4) Lake, (5) Firepit, (6) Tent, (7) Showers, (8) Lockers");
-                int choice = scanner.nextInt();
-    
-                //Handle user's choice based on location
-                switch (choice) {
-                    case 1:
-                        Kitchen kitchen = new Kitchen();
-                        if (kitchen.explore(user)){ //Call explore method in Kitchen class
+            // Day 3
+            System.out.println("DAY 3");
+            executeDayThree(user);
+            System.out.println("Day 4 is waiting...");
+
+        } else {
+            System.out.println("OK then...");
+        }
+
+        userInput.close();
+        scanner.close();
+    }
+
+    private static User initializeUser(Scanner userInput) {
+        System.out.println("Hello brave user. What's your name?");
+        String userName = userInput.nextLine();
+        User user = new User(userName);
+        user.userDetails();
+
+        System.out.println("Your hiking group left you behind in this cold, haunted, and lifeless campsite.\n" +
+                "The choices you make, or the choices you don’t make, will decide whether or not you make it out alive.\n" +
+                "Choose wisely and stay alert. We suggest you begin by collecting resources to survive.\n" +
+                "However, you’re only allowed to store three. Again, choose wisely. Good luck.");
+
+        return user;
+    }
+
+    private static void executeDayOne(User user) {
+        int itemsCollected = 0;
+
+        // Day 1 loop to choose locations until all items are collected
+        while (itemsCollected < MAX_ITEMS) {
+            System.out.println("Choose a place: (1) Kitchen, (2) Woods, (3) Backstage, (4) Lake, (5) Firepit, (6) Tent, (7) Showers, (8) Lockers");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline after nextInt()
+
+            // Handle user's choice based on location
+            switch (choice) {
+                case 1:
+                    Kitchen kitchen = new Kitchen();
+                    if (kitchen.explore(user)) {
                         itemsCollected++;
-                        }
-                        break;
-                    case 2:
-                        Woods woods = new Woods();
-                        if (woods.explore(user)){
+                    }
+                    break;
+                case 2:
+                    Woods woods = new Woods();
+                    if (woods.explore(user)) {
                         itemsCollected++;
-                        }
-                        break;
-                    case 3:
-                        Backstage backstage = new Backstage();
-                        if (backstage.explore(user)){
-                        itemsCollected++;
-                        }
-                        break;
-                    case 4:
-                        Lake lake = new Lake();
-                        if (lake.explore(user)){
-                        itemsCollected++;
-                        }
-                        break;
-                    case 5:
-                        Firepit firepit = new Firepit();
-                        if (firepit.explore(user)){
-                        itemsCollected++;
-                        }
-                        break;
-                    case 6:
-                        Tent tent = new Tent();
-                        if (tent.explore(user)){
-                        itemsCollected++;
-                        }
-                        break;
-                    case 7:
-                        Showers showers = new Showers();
-                        showers.explore(user);
-                        break;
-                    case 8:
-                        Lockers lockers = new Lockers();
-                        if (lockers.explore(user)){
-                        itemsCollected++;
-                        }
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please choose again.");
-                        break;
-                }
-             }
-             //Display message when all items are collected
-             System.out.println("These are the items you collected:");
-             user.printInventory();
+                    }
+                    break;
+                case 3:
+                    Backstage backstage = new Backstage();
+                    if (backstage.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                case 4:
+                    Lake lake = new Lake();
+                    if (lake.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                case 5:
+                    Firepit firepit = new Firepit();
+                    if (firepit.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                case 6:
+                    Tent tent = new Tent();
+                    if (tent.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                case 7:
+                    Showers showers = new Showers();
+                    showers.explore(user);
+                    break;
+                case 8:
+                    Lockers lockers = new Lockers();
+                    if (lockers.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please choose again.");
+                    break;
+            }
+        }
 
-             //Narrative for day two
-             exploreDayTwo(user, scanner);
+        // Display message when all items are collected
+        System.out.println("These are the items you collected on Day 1:");
+        user.printInventory();
+    }
 
-             System.out.println("It is time to sleep after an eventful day...\n"+
-             "Here is your update on helath and inventory");
-             user.userDetails();
-             user.printInventory();
-             System.out.println("Day 3 is waiting...");
-         } else {
-             System.out.println("OK then...");
-         }
-         userInput.close();
-         scanner.close();
-     }
-     public static void exploreDayTwo(User user, Scanner scanner) {
-        System.out.println("DAY 2");
+    private static void executeDayTwo(User user) {
         System.out.println("You start to feel hungry...");
 
         // Check if user needs wood
         if (!user.hasItem("Wood")){
-            System.out.println("You are feeling hungry but you need wood for cooking. \n" +
+            System.out.println("Since you did not collect wood on Day 1. \n" +
             "You decide to explore the woods to collect wood for fire");
             user.useraddInventory("Wood");
 
@@ -133,7 +143,8 @@ public class SurvivalGame {
 
         // Check if user needs matches
         if (!user.hasItem("Matches")){
-            System.out.println("You are feeling hungry but need need matches to start a fire for cooking. \n" +
+            System.out.println("You did not collect any matches on Day 1 \n" +
+            "You now need to find some to start a fire for cooking. \n" +
             "You decide to explore the firepit to find left over macthes.");
             user.useraddInventory("Matches");
 
@@ -144,7 +155,8 @@ public class SurvivalGame {
 
         // Check if user needs food
         if (!user.hasFood()){
-            System.out.println("You are hungry but you need food. Let's explore the kitchen.");
+            System.out.println("Since you did not collect any food in Day 1... \n" +
+            "Let's explore the kitchen.");
             exploreKitchen(user, scanner);
         }
 
@@ -202,28 +214,21 @@ public class SurvivalGame {
             user.printInventory();
         
             String chosenFood = null;
+            boolean isValidFood = false;
         
-            while (chosenFood == null) {
-                System.out.println("Enter the food item you want to cook: ");
-        
-                // Consume any leftover newline characters
-                if (scanner.hasNextLine()) {
-                    scanner.nextLine(); // Consume newline
-                }
-        
+            while (!isValidFood) {
                 String input = scanner.nextLine().trim().toLowerCase();
-        
-                if (!input.isEmpty()) {
+                    
+                if (input.isEmpty()){
+                    System.out.println("Enter the food item you want to cook: ");
+                } else if (user.hasItem(input)) {
                     chosenFood = input;
-        
-                    if (!user.hasItem(chosenFood)) {
-                        System.out.println("You do not have " + chosenFood + " in your inventory.");
-                        chosenFood = null; // Reset chosenFood to null to continue loop
-                    } else {
-                        break; // Exit loop if valid food item is chosen
-                    }
+                    user.removeItem(input); // Remove the chosen food item from inventory
+                    isValidFood = true; // Set flag to exit loop
                 } else {
-                    System.out.println("Invalid input. Please try again.");
+                    System.out.println("You do not have " + input + " in your inventory.");
+                    System.out.println("Please enter a food item from your inventory.");
+                    System.out.println("Enter the food item you want to cook: ");
                 }
             }
         
@@ -245,10 +250,91 @@ public class SurvivalGame {
             }
         } else {
             System.out.println("You do not have water to extinguish the fire... \n" +
-            "you now have to fan the fire out, causing you to lose energy");
+            "You now have to fan the fire out, causing you to lose energy");
             user.decreaseHealth(1); // Lose 1 heart due to exhaustion from faning
+        }
+        
+        // Display updated status after Day 2
+        System.out.println("Here is your status after Day 2:");
+        user.userDetails();
+        user.printInventory();
+    }
+
+    private static void executeDayThree(User user) {
+        System.out.println("Use this day to gather resources since some of them were lost yesterday... \n" +
+        "But your backpack can only hold three more items so choose wisely...");
+
+    // Explore different locations to gather resources for Day 3
+    exploreLocationsForDayThree(user, scanner);
+
+    // Display updated status after Day 3
+    System.out.println("Here is your status after Day 3:");
+    user.userDetails();
+    user.printInventory();
+}
+
+    private static void exploreLocationsForDayThree(User user, Scanner scanner) {
+        int itemsCollected = 0;
+
+        // Main loop to choose locations until all items are collected
+        while (itemsCollected < MAX_ITEMS) {
+            // User chooses a location
+            System.out.println("Choose a place to explore: (1) Kitchen, (2) Woods, (3) Backstage, (4) Lake, (5) Firepit, (6) Tent, (7) Showers, (8) Lockers");
+            int choice = scanner.nextInt();
+
+            // Handle user's choice based on location
+            switch (choice) {
+                case 1:
+                    Kitchen kitchen = new Kitchen();
+                    if (kitchen.explore(user)) {
+                        itemsCollected++;
+                    }
+                    break;
+                case 2:
+                    Woods woods = new Woods();
+                    if (woods.explore(user)) {
+                        itemsCollected++;
+                    }
+                    break;
+                case 3:
+                    Backstage backstage = new Backstage();
+                    if (backstage.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                case 4:
+                    Lake lake = new Lake();
+                    if (lake.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                case 5:
+                    Firepit firepit = new Firepit();
+                    if (firepit.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                case 6:
+                    Tent tent = new Tent();
+                    if (tent.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                case 7:
+                    Showers showers = new Showers();
+                    showers.explore(user);
+                    break;
+                case 8:
+                    Lockers lockers = new Lockers();
+                    if (lockers.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please choose again.");
+                    break;
+            }
         }
     }
 }
 
- 
