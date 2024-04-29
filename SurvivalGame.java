@@ -36,6 +36,10 @@ public class SurvivalGame {
             executeDayThree(user);
             System.out.println("Day 4 is waiting...");
 
+            // Day 4
+            System.out.println("DAY 4");
+            executeDayFour(user);
+
         } else {
             System.out.println("OK then...");
         }
@@ -335,6 +339,9 @@ public class SurvivalGame {
                     break;
             }
         }
+    }
+    private static void executeDayFour (User user) {
+        // Methods for Day 4
     }
 }
 
