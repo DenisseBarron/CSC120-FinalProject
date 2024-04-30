@@ -38,7 +38,7 @@ public class SurvivalGame {
 
             // Day 4
             System.out.println("DAY 4");
-            executeDayFour(user);
+            executeDayFour(user, scanner);
 
         } else {
             System.out.println("OK then...");
@@ -243,7 +243,7 @@ public class SurvivalGame {
         public static void handleFireEvent(User user, boolean hasWater){
             if (hasWater) {
                 System.out.println("You have water in your inventory. Do you want to use it to extinguish the fire? (yes/no)");
-                String choice =scanner.nextLine().trim().toLowerCase();
+                String choice = scanner.nextLine().trim().toLowerCase();
 
                 if (choice.equals("yes")){
                     user.removeItem("Water");
@@ -340,7 +340,8 @@ public class SurvivalGame {
             }
         }
     }
-    private static void executeDayFour (User user) {
+
+    private static void executeDayFour (User user, Scanner scanner) {
         System.out.println("It's been 4 days since you were left by your group.\n" +
         "During the day it's difficult to accept the cruel hand the universe has dealt you, but when the sun goes down\n"+
         "it becomes almost unbearable. Not only that, but it's cold!");
@@ -348,9 +349,9 @@ public class SurvivalGame {
         if (user.hasItem("Warm clothes")){
             System.out.println("You have some warm clothes in your inventory.\n" +
             "Would you like to put them on?");
-            String warmthChoice = scanner.nextLine();
-          
-            if (warmthChoice.equals("Yes")){
+            String warmthChoice = scanner.nextLine().trim().toLowerCase();
+
+            if (warmthChoice.equals("yes")){
                 user.removeItem("Warm clothes");
                 System.out.println("That's an improvement!");
                 user.increaseHealth(1);
