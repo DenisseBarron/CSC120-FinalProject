@@ -341,6 +341,43 @@ public class SurvivalGame {
         }
     }
     private static void executeDayFour (User user) {
+        System.out.println("It's been 4 days since you were left by your group.\n" +
+        "During the day it's difficult to accept the cruel hand the universe has dealt you,\n "+
+        "but when the sun goes down it becomes almost unbearable. Not only that, but it's cold! \n");
+
+        if (user.hasItem("Warm clothes")){
+            System.out.println("You have some warm clothes in your inventory.\n" +
+            "Would you like to put it on?");
+            String choice =scanner.nextLine();
+            
+            if (choice.equals("Yes")){
+                user.removeItem("Warm clothes");
+                System.out.println("That's an improvement!");
+                user.increaseHealth(1);
+            }
+            else {
+                System.out.println("You're going to catch a cold if you don't put something warm on soon...");
+                user.decreaseHealth(1);
+            }
+        }
+        else {
+            System.out.println("It's too bad you don't have some warm clothes in your inventory...");
+            user.decreaseHealth(1);
+        }
+        
+        /*if (hasWater) {
+            System.out.println("You have water in your inventory. Do you want to use it to extinguish the fire? (yes/no)");
+            String choice =scanner.nextLine().trim().toLowerCase();
+
+            if (choice.equals("yes")){
+                user.removeItem("Water");
+                System.out.println("You used water to extinguish the fire. It is no longer in your inventory.");
+        } else {
+            System.out.println("You chose not to use water. Instead, you have to fan the fire out, causing you to lose energy");
+            user.decreaseHealth(1); // Lose 1 heart due to exhaustion from fanning
+        }*/
+
+
         // Methods for Day 4
     }
 }
