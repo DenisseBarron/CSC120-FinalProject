@@ -348,8 +348,8 @@ public class SurvivalGame {
         if (user.hasItem("Warm clothes")){
             System.out.println("You have some warm clothes in your inventory.\n" +
             "Would you like to put them on?");
-            String warmthChoice =scanner.nextLine();
-            
+            String warmthChoice = scanner.nextLine();
+          
             if (warmthChoice.equals("Yes")){
                 user.removeItem("Warm clothes");
                 System.out.println("That's an improvement!");
