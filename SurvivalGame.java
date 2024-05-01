@@ -266,7 +266,8 @@ public class SurvivalGame {
 
     private static void executeDayThree(User user) {
         System.out.println("Use this day to gather resources since some of them were lost yesterday... \n" +
-        "But your backpack can only hold three more items so choose wisely...");
+        "But your backpack can only hold three more items so choose wisely...\n" +
+        "There are new ");
 
     // Explore different locations to gather resources for Day 3
     exploreLocationsForDayThree(user, scanner);
@@ -370,17 +371,7 @@ public class SurvivalGame {
             System.out.println("It's too bad you don't have some warm clothes in your inventory...");
             user.decreaseHealth(1);
         }
-    
-        // Additional storyline or game progression can be added here
-        // For example:
-        //  - Continuing the narrative with additional challenges or events
-        //  - Providing choices for the player to explore, gather resources, or interact with the environment
-        //  - Displaying updated status or inventory after completing Day 4
     }
-    
-    
-    
-
         // methods / storyline
         // it's cold, getting dark, and this camp is haunted.
         // warm clothes(), light a fire (need wood&lighter)
