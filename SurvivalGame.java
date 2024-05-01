@@ -381,7 +381,7 @@ public class SurvivalGame {
         }
 
         System.out.println("It's chilly and nightfall is nearing.\n" +
-        "Would you like to get a fire going?");
+        "Would you like to get a fire going?"); // NOT TAKING IN USER RESPONSE FIX
         String response = scanner.nextLine().toLowerCase();
 
         if (response.equals("yes")){
@@ -475,8 +475,24 @@ public class SurvivalGame {
                 System.out.println("You attack the ghost and hit him on the head. However, he lifts his lantern and fights back, hitting you right on the head.");
                 user.decreaseHealth(5);
                 System.out.println("Do you want to keep attacking? Warning: This may be fatal.");
-
-            } 
+                String choice2 = scanner.nextLine().toLowerCase();
+                if (choice2.equals("yes")){
+                    user.decreaseHealth(5);
+                    System.out.println("You're dead! And now you haunt Campers Hallow too.");
+                } else {
+                    System.out.println("Good choice! You throw your weapon down.");
+                    user.removeItem("Weapon");
+                    System.out.println("The ghost backs down too.");
+                    ghostHelp(user, scanner);
+                }
+            } else {
+                System.out.println("Nice choice! Fighting a ghost can kill you.");
+            }
+        } else {
+            System.out.println("You lift your arm ready to punch the ghost, but he knocks you out before you can hit.");
+            System.out.println("*BAM*");
+            user.decreaseHealth(10);
+            System.out.println("Who fights a ghost without a weapon?! You're dead! And now you haunt Campers Hallow too.");
         }
     }
 
