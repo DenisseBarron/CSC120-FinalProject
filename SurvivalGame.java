@@ -22,10 +22,13 @@ public class SurvivalGame {
 
         if (userResponse.equals("YES")) {
             User user = initializeUser(userInput);
+            Backstage backstage = new Backstage();
+
+
 
             // Day 1
             System.out.println("DAY 1");
-            executeDayOne(user);
+            executeDayOne(user, backstage);
 
             // Day 2
             System.out.println("DAY 2");
@@ -33,7 +36,7 @@ public class SurvivalGame {
 
             // Day 3
             System.out.println("DAY 3");
-            executeDayThree(user);
+            executeDayThree(user, backstage);
             System.out.println("Day 4 is waiting...");
 
             // Day 4
@@ -62,8 +65,10 @@ public class SurvivalGame {
         return user;
     }
 
-    private static void executeDayOne(User user) {
+    private static void executeDayOne(User user, Backstage backstage) {
         int itemsCollected = 0;
+        Backstage backstag = new Backstage();
+
 
         // Day 1 loop to choose locations until all items are collected
         while (itemsCollected < MAX_ITEMS) {
@@ -86,11 +91,15 @@ public class SurvivalGame {
                     }
                     break;
                 case 3:
-                    Backstage backstage = new Backstage();
-                    if (backstage.explore(user)){
-                    itemsCollected++;
+                    // Explore Backstage on Day 1 (no weapon collection)
+                if (itemsCollected < MAX_ITEMS) {
+                    if (backstag.explore(user, false)) {
+                        itemsCollected++;
                     }
-                    break;
+                } else {
+                    System.out.println("You've collected the maximum number of items for today.");
+                }
+                break;
                 case 4:
                     Lake lake = new Lake();
                     if (lake.explore(user)){
@@ -264,7 +273,7 @@ public class SurvivalGame {
         user.printInventory();
     }
 
-    private static void executeDayThree(User user) {
+    private static void executeDayThree(User user, Backstage backstage) {
         System.out.println("Use this day to gather resources since some of them were lost yesterday... \n" +
         "But your backpack can only hold three more items so choose wisely...\n" +
         "Note: New items have been added to some locations. These may help you in future situations.");
@@ -280,6 +289,8 @@ public class SurvivalGame {
 
     private static void exploreLocationsForDayThree(User user, Scanner scanner) {
         int itemsCollected = 0;
+        Backstage backstage = new Backstage();
+
 
         // Main loop to choose locations until all items are collected
         while (itemsCollected < MAX_ITEMS) {
@@ -302,10 +313,11 @@ public class SurvivalGame {
                     }
                     break;
                 case 3:
-                    Backstage backstage = new Backstage();
-                    if (backstage.explore(user)){
-                    itemsCollected++;
-                    }
+                    // Check if it's Day 3 to allow Backstage exploration with weapon collection
+                    if (itemsCollected < MAX_ITEMS) {
+                        if (backstage.explore(user, true)) 
+                            itemsCollected++;
+                        }
                     break;
                 case 4:
                     Lake lake = new Lake();
