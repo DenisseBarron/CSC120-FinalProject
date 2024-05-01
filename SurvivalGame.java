@@ -355,7 +355,7 @@ public class SurvivalGame {
     
             // Validate user input
             while (!response.equals("yes") && !response.equals("no")) {
-                System.out.println("Invalid response. Please enter 'yes' or 'no'.");
+               System.out.println("Invalid response. Please enter 'yes' or 'no'.");
                 response = scanner.nextLine().trim().toLowerCase();
             }
     
