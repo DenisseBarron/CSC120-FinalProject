@@ -359,10 +359,7 @@ public class SurvivalGame {
             System.out.println("You have some warm clothes in your inventory.");
             System.out.println("Would you like to put them on? (yes/no)");
     
-            String response = scanner.nextLine().trim().toLowerCase();
-    
-            // Consume newline character after reading integer input
-            scanner.nextLine();
+            String response = scanner.nextLine();
 
             // Validate user input
             while (!response.equals("yes") && !response.equals("no")) {
