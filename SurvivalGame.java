@@ -417,12 +417,19 @@ public class SurvivalGame {
         System.out.println("'"+ user.name + "'" + "");
         System.out.println("\033[3mA friend!\033[0m");
         System.out.println("Before you can think any further, you dash into the woods frantically looking for your 'friend'.");
-        System.out.println("What you find instead is a dreadful sight: \n" +
-        "A young man holding a lantern is staring directly at you. His skin is pale and he's wearing a tattered red shirt with the words 'Campers Hallow' on it. 'Help,' he croaks before taking a step towards you.");  
-        System.out.println("Wh");
+        System.out.println("What you find instead is a dreadful sight: A young man holding a lantern is staring directly at you. His skin is pale and he's wearing a tattered red shirt with the words 'Campers Hallow' on it. 'Help,' he croaks before taking a step towards you and aggressively reaches to touch your arm.");  
+        System.out.println("Do you help or fight him off? (type 'help' or 'fight')");
+        String choice = scanner.nextLine().toLowerCase();
+
+        if (choice.equals("help")){
+            ghostHelp(user, scanner);
+        }
+        else if (choice.equals("fight")){
+            ghostFight(user, scanner);
+        } else {
+            System.out.println("Invalid option.");
+        }
     }
-
-
 
     private static void exploreLocationsForDayFour (User user, Scanner scanner) {
         int itemsCollected = 0;
@@ -455,6 +462,17 @@ public class SurvivalGame {
     }
 
 
+    private static void ghostHelp (User user, Scanner scanner) {
+        System.out.println("Choose a place to explore: (1) Woods, (2) Firepit");
+        String choice = scanner.nextLine(); 
+        System.out.println(choice);
+        }
+
+    private static void ghostFight (User user, Scanner scanner) {
+        System.out.println("Choose a place to explore: (1) Woods, (2) Firepit");
+        String choice = scanner.nextLine();
+        System.out.println(choice);
+        }
 
 
         // methods / storyline

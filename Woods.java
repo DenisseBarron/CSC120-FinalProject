@@ -22,4 +22,5 @@ public class Woods {
         return false; // Wood not collected
         }  
     }
+     
 }
