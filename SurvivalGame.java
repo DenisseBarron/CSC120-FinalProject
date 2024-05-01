@@ -355,7 +355,7 @@ public class SurvivalGame {
     
             // Validate user input
             while (!response.equals("yes") && !response.equals("no")) {
-               System.out.println("Invalid response. Please enter 'yes' or 'no'.");
+                System.out.println("Invalid response. Please enter 'yes' or 'no'.");
                 response = scanner.nextLine().trim().toLowerCase();
             }
     
@@ -372,6 +372,7 @@ public class SurvivalGame {
             user.decreaseHealth(1);
         }
     }
+    
         // methods / storyline
         // it's cold, getting dark, and this camp is haunted.
         // warm clothes(), light a fire (need wood&lighter)
