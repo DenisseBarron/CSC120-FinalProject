@@ -461,7 +461,6 @@ public class SurvivalGame {
         }
     }
 
-
     private static void ghostHelp (User user, Scanner scanner) {
         System.out.println("Choose a place to explore: (1) Woods, (2) Firepit");
         String choice = scanner.nextLine(); 
@@ -469,11 +468,17 @@ public class SurvivalGame {
         }
 
     private static void ghostFight (User user, Scanner scanner) {
-        System.out.println("Choose a place to explore: (1) Woods, (2) Firepit");
-        String choice = scanner.nextLine();
-        System.out.println(choice);
-        }
+        if (user.hasItem("Weapon")) {
+            System.out.println("You have a weapon! Do you want to attack?"); 
+            String choice = scanner.nextLine().toLowerCase();        
+            if(choice.equals("yes")){
+                System.out.println("You attack the ghost and hit him on the head. However, he lifts his lantern and fights back, hitting you right on the head.");
+                user.decreaseHealth(5);
+                System.out.println("Do you want to keep attacking? Warning: This may be fatal.");
 
+            } 
+        }
+    }
 
         // methods / storyline
         // it's cold, getting dark, and this camp is haunted.
