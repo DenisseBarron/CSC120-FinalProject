@@ -267,7 +267,7 @@ public class SurvivalGame {
     private static void executeDayThree(User user) {
         System.out.println("Use this day to gather resources since some of them were lost yesterday... \n" +
         "But your backpack can only hold three more items so choose wisely...\n" +
-        "There are new ");
+        "Note: New items have been added to some locations. These may help you in future situations.");
 
     // Explore different locations to gather resources for Day 3
     exploreLocationsForDayThree(user, scanner);
