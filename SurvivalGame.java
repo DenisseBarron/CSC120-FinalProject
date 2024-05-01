@@ -383,8 +383,51 @@ public class SurvivalGame {
             System.out.println("It's too bad you don't have some warm clothes in your inventory...");
             user.decreaseHealth(1);
         }
-    }
+        System.out.println("It's still chilly and nightfall is nearing. Let's get a fire going.");
+        if (!user.hasItem("Matches") || !user.hasItem("Wood")) {
+            user.printInventory();
+            System.out.println("Go find some.");
+            exploreLocationsForDayFour(user, scanner);
+            System.out.println("Nice! You have acquired the necessary items to get a fire going! And just in time too. \n" +
+            "It's dark out.");
+        } else {
+            System.out.println("");
+        }
     
+    }
+    private static void exploreLocationsForDayFour (User user, Scanner scanner) {
+        int itemsCollected = 0;
+
+        // Main loop to choose locations until all items are collected
+        while (itemsCollected < MAX_ITEMS) {
+            // User chooses a location
+            System.out.println("Choose a place to explore: (1) Woods, (2) Firepit");
+            int choice = scanner.nextInt();
+
+            // Handle user's choice based on location
+            switch (choice) {
+                case 1:
+                    Woods woods = new Woods();
+                    if (woods.explore(user)) {
+                        itemsCollected++;
+                    }
+                    break;
+                case 2:
+                    Firepit firepit = new Firepit();
+                    if (firepit.explore(user)){
+                    itemsCollected++;
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please choose again.");
+                    break;
+            }
+        }
+    }
+
+
+
+
         // methods / storyline
         // it's cold, getting dark, and this camp is haunted.
         // warm clothes(), light a fire (need wood&lighter)
