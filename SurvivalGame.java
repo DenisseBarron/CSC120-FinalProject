@@ -361,6 +361,9 @@ public class SurvivalGame {
     
             String response = scanner.nextLine().trim().toLowerCase();
     
+            // Consume newline character after reading integer input
+            scanner.nextLine();
+
             // Validate user input
             while (!response.equals("yes") && !response.equals("no")) {
                 System.out.println("Invalid response. Please enter 'yes' or 'no'.");
