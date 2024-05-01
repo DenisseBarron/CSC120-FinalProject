@@ -352,8 +352,8 @@ public class SurvivalGame {
 
     private static void executeDayFour(User user) {
         System.out.println("It's been 4 days since you were left by your group.");
-        System.out.println("During the day, it's difficult to accept the cruel hand the universe has dealt you,");
-        System.out.println("But when the sun goes down, it becomes almost unbearable. Not only that, it's cold!");
+        System.out.println("During the day, it's difficult to accept the cruel hand the universe has dealt you,\n" +
+        "but when the sun goes down, it becomes almost unbearable. Not only that, it's cold!");
     
         if (user.hasItem("Warm clothes")) {
             System.out.println("You have some warm clothes in your inventory.");
@@ -379,18 +379,51 @@ public class SurvivalGame {
             System.out.println("It's too bad you don't have some warm clothes in your inventory...");
             user.decreaseHealth(1);
         }
-        System.out.println("It's still chilly and nightfall is nearing. Let's get a fire going.");
-        if (!user.hasItem("Matches") || !user.hasItem("Wood")) {
-            user.printInventory();
-            System.out.println("Go find some.");
-            exploreLocationsForDayFour(user, scanner);
-            System.out.println("Nice! You have acquired the necessary items to get a fire going! And just in time too. \n" +
-            "It's dark out.");
-        } else {
-            System.out.println("");
-        }
+
+        System.out.println("It's chilly and nightfall is nearing.\n" +
+        "Would you like to get a fire going?");
+        String response = scanner.nextLine().toLowerCase();
+
+        if (response.equals("yes")){
+            if (!user.hasItem("Matches") || !user.hasItem("Wood")) {
+                user.printInventory();
+                System.out.println("You seem to be missing either matches or wood to start the fire. Go find some.");
+                exploreLocationsForDayFour(user, scanner);
+                user.removeItem("Matches");
+                user.removeItem("Wood");
     
+            } else {
+                user.removeItem("Matches");
+                user.removeItem("Wood");
+            }
+            System.out.println("Nice! You have the necessary items to get a fire going! And just in time too. It's dark out.");
+            user.increaseHealth(1);
+            System.out.println("Feeling the warmth of the fire, you start to get drowsy. However, before you can let yourself go, you begin to register \n" +
+            "the severity of your situation and a pang of anxiety soars throughout your entire body.");
+        } else {
+            user.decreaseHealth(1);
+            System.out.println("It's dark out. Now you're really cold and begin to shiver, rocking back and forth when out of nowhere-");
+        }
+
+        System.out.println("*SNAP*");
+        System.out.println("*"+ "\033[3mwhispers\033[0m"+"*");
+        System.out.println("*"+ "\033[3mwhispers\033[0m"+"*");
+        System.out.println("*"+ "\033[3mwhispers\033[0m"+"*");
+        System.out.println("Slowly, you slip out of your trance and turn in the direction of the sudden sounds. It's near the woods. \n" +
+        "In the four days and nights you've been at the camp, you have encountered a number of unsettling sounds. But this one is different...");
+        System.out.println("That sound isn't just a sound...");
+        System.out.println("'"+ user.name + "'" + "");
+        System.out.println("It's a voice... A voice you know.");
+        System.out.println("'"+ user.name + "'" + "");
+        System.out.println("\033[3mA friend!\033[0m");
+        System.out.println("Before you can think any further, you dash into the woods frantically looking for your 'friend'.");
+        System.out.println("What you find instead is a dreadful sight: \n" +
+        "A young man holding a lantern is staring directly at you. His skin is pale and he's wearing a tattered red shirt with the words 'Campers Hallow' on it. 'Help,' he croaks before taking a step towards you.");  
+        System.out.println("Wh");
     }
+
+
+
     private static void exploreLocationsForDayFour (User user, Scanner scanner) {
         int itemsCollected = 0;
 
