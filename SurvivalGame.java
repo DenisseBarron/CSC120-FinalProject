@@ -272,7 +272,7 @@ public class SurvivalGame {
     private static void executeDayThree(User user, Backstage backstage) {
         System.out.println("Use this day to gather resources since some of them were lost yesterday... \n" +
         "But your backpack can only hold three more items so choose wisely...\n" +
-        "Note: New items have been added to some locations. These may help you in future situations.");
+        "NOTE: New items have been added to some locations. These may help you in future situations.");
 
     // Explore different locations to gather resources for Day 3
     exploreLocationsForDayThree(user, scanner);
@@ -353,7 +353,7 @@ public class SurvivalGame {
     private static void executeDayFour(User user) {
         System.out.println("It's been 4 days since you were left by your group.");
         System.out.println("During the day, it's difficult to accept the cruel hand the universe has dealt you,");
-        System.out.println("but when the sun goes down, it becomes almost unbearable. Not only that, it's cold!");
+        System.out.println("But when the sun goes down, it becomes almost unbearable. Not only that, it's cold!");
     
         if (user.hasItem("Warm clothes")) {
             System.out.println("You have some warm clothes in your inventory.");
