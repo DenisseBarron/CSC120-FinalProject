@@ -462,6 +462,7 @@ public class SurvivalGame {
     }
 
     private static void ghostHelp (User user, Scanner scanner) {
+        // help ghost -- ask him what went wrong -- storytime -- recover idk 
         System.out.println("Choose a place to explore: (1) Woods, (2) Firepit");
         String choice = scanner.nextLine(); 
         System.out.println(choice);
@@ -496,13 +497,12 @@ public class SurvivalGame {
         }
     }
 
-        // methods / storyline
-        // it's cold, getting dark, and this camp is haunted.
-        // warm clothes(), light a fire (need wood&lighter)
-        // hear something in the woods. to explore in the dark - need lamp. give option to look for one. 
-        // once lamp is acquired: 
-        //  the wolves howl. you shudder. vaguely remembering (if they went into kitchen and read 
-        // story == true) the missing man.. who was never found... 
+        // day 5 - helping ghost took energy 
+        // recover and discover new items! (added to tent, kitchen, and lockers)
+        // no discovery of new items --> stuck there for long time!
+        // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
+        // no seek shelter --> struck by lightening!
+        // day 7 - calm after the storm, beautiful day, and able to contact help!
 
 }
 
