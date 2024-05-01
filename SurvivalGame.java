@@ -38,7 +38,7 @@ public class SurvivalGame {
 
             // Day 4
             System.out.println("DAY 4");
-            executeDayFour(user, scanner);
+            executeDayFour(user);
 
         } else {
             System.out.println("OK then...");
@@ -341,30 +341,45 @@ public class SurvivalGame {
         }
     }
 
-    private static void executeDayFour (User user, Scanner scanner) {
-        System.out.println("It's been 4 days since you were left by your group.\n" +
-        "During the day it's difficult to accept the cruel hand the universe has dealt you, but when the sun goes down\n"+
-        "it becomes almost unbearable. Not only that, but it's cold!");
-
-        if (user.hasItem("Warm clothes")){
-            System.out.println("You have some warm clothes in your inventory.\n" +
-            "Would you like to put them on?");
-            String warmthChoice = scanner.nextLine().trim().toLowerCase();
-
-            if (warmthChoice.equals("yes")){
+    private static void executeDayFour(User user) {
+        System.out.println("It's been 4 days since you were left by your group.");
+        System.out.println("During the day, it's difficult to accept the cruel hand the universe has dealt you,");
+        System.out.println("but when the sun goes down, it becomes almost unbearable. Not only that, it's cold!");
+    
+        if (user.hasItem("Warm clothes")) {
+            System.out.println("You have some warm clothes in your inventory.");
+            System.out.println("Would you like to put them on? (yes/no)");
+    
+            String response = scanner.nextLine().trim().toLowerCase();
+    
+            // Validate user input
+            while (!response.equals("yes") && !response.equals("no")) {
+                System.out.println("Invalid response. Please enter 'yes' or 'no'.");
+                response = scanner.nextLine().trim().toLowerCase();
+            }
+    
+            if (response.equals("yes")) {
                 user.removeItem("Warm clothes");
                 System.out.println("That's an improvement!");
                 user.increaseHealth(1);
-            }
-            else {
+            } else {
                 System.out.println("You're going to catch a cold if you don't put something warm on soon...");
                 user.decreaseHealth(1);
             }
-        }
-        else {
+        } else {
             System.out.println("It's too bad you don't have some warm clothes in your inventory...");
             user.decreaseHealth(1);
         }
+    
+        // Additional storyline or game progression can be added here
+        // For example:
+        //  - Continuing the narrative with additional challenges or events
+        //  - Providing choices for the player to explore, gather resources, or interact with the environment
+        //  - Displaying updated status or inventory after completing Day 4
+    }
+    
+    
+    
 
         // methods / storyline
         // it's cold, getting dark, and this camp is haunted.
@@ -374,6 +389,5 @@ public class SurvivalGame {
         //  the wolves howl. you shudder. vaguely remembering (if they went into kitchen and read 
         // story == true) the missing man.. who was never found... 
 
-    }
 }
 
