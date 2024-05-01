@@ -93,12 +93,8 @@ public class SurvivalGame {
                 case 3:
                     // Explore Backstage on Day 1 (no weapon collection)
                 if (itemsCollected < MAX_ITEMS) {
-                    if (backstag.explore(user, false)) {
-                        itemsCollected++;
-                    }
-                } else {
-                    System.out.println("You've collected the maximum number of items for today.");
-                }
+                    if (backstag.explore(user, false));
+                } 
                 break;
                 case 4:
                     Lake lake = new Lake();
