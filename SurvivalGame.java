@@ -383,7 +383,6 @@ public class SurvivalGame {
         }
     
     }
-<<<<<<< HEAD
     private static void exploreLocationsForDayFour (User user, Scanner scanner) {
         int itemsCollected = 0;
 
@@ -417,9 +416,6 @@ public class SurvivalGame {
 
 
 
-=======
-    
->>>>>>> d1729a48d52ee71202762a3f094c1541188a057a
         // methods / storyline
         // it's cold, getting dark, and this camp is haunted.
         // warm clothes(), light a fire (need wood&lighter)
