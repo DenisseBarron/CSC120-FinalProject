@@ -390,7 +390,7 @@ public class SurvivalGame {
         }
 
         System.out.println("It's chilly and nightfall is nearing.");
-        System.out.println("Would you like to get a fire going? (yes/no)"); // NOT TAKING IN USER RESPONSE FIX
+        System.out.println("Would you like to get a fire going? (yes/no)");
 
         String response = scanner.nextLine().toLowerCase();
 
