@@ -632,7 +632,12 @@ public class SurvivalGame {
         System.out.println("6 days. It's been 6 days since this craziness began. You've searched for food, survived a fire, encountered a ghost, and have finally collected what you need to leave!");
         System.out.println("Using the items from the previous day you get to work and place the batteries into the radio, using the tin foil to improve your connection.");
         System.out.println("At first you only hear static, but soon voices begin to emerge.");
-
+        System.out.println("They ask you about your location, name, age and group of hikers you were with");
+        System.out.println("Soon after a rescue teams finds you");
+        System.out.println("'You are lucky to be alive' says one of them...");
+        gameOver(user);
+        // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
+        // no seek shelter --> struck by lightening!
     }
 
     public static void gameOver(User user){
@@ -646,8 +651,6 @@ public class SurvivalGame {
         //System.out.println("GAME OVER");
         System.exit(0); // End game
     }
-        // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
-        // no seek shelter --> struck by lightening!
         // day 7 - calm after the storm, beautiful day, and able to contact help!
 
 }
