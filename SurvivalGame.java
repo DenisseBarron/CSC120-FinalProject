@@ -617,7 +617,7 @@ public class SurvivalGame {
         } else {
             user.decreaseHealth(10);
             System.out.println("You failed to collect all the items needed.");
-            // Handle game over or other consequences here...
+            System.out.println("You're dead! And now you haunt Campers Hallow...");
         }
         if (user.getHealth() <= 0){
             gameOver(user);
