@@ -470,10 +470,25 @@ public class SurvivalGame {
 
     private static void ghostHelp (User user, Scanner scanner) {
         // help ghost -- ask him what went wrong -- storytime -- recover idk 
-        System.out.println("Choose a place to explore: (1) Woods, (2) Firepit");
-        String choice = scanner.nextLine(); 
+        System.out.println("You let yourself relax when you realize the ghost is crying. His hand barely grazes your arm, but you can feel how clammy and cold his skin is. 'What's wrong?' you ask.");
+        System.out.println("'I don't know what to do! My group left me and it feels like I've been looking for them forever. No one has ever come back for me,' he manages to say in between sobs.");
+        System.out.println("It dawns on you that this man is in the exact position as you, or was. 'What's your name?' you ask again.");
+        System.out.println("'George,' he responds. 'But my friends call me Georgie,' he adds. Then, sniffiling, he asks, 'Why are you here?'");
+        System.out.println("After the two of you get acquanited and realize you're experiencing the same situation years apart George says,'" + user.name+ ", I know this is a lot to ask from you, but will you please bury my body?'");
+        System.out.println("Will you bury George's body?");
+        String choice = scanner.nextLine().toLowerCase(); 
         System.out.println(choice);
+        if (choice.equals("yes")){
+            System.out.println("You bury George's body. Before his ghost gets into the ground, he tells you something.");
+            System.out.println("'You will find what you're in need of most in the kitchen or in the tent or in the lockers. Thank you for helping me.'");
+            System.out.println("Confused you ask a small, 'What?' He gives you a smile before getting into the ground. He begins to glow and slowly disappears.");
+        } else {
+            System.out.println("'I understand. It's a lot to ask from someone you've only just met,' he says sadly. 'Thank you for talking to me. You will find what you're in need of most in the kitchen or in the tent or in the lockers.'");
+            System.out.println("Confused you ask a small, 'What?' He says,'At least one of us deserves to make it out of this old place,' before disappearing back into the woods.");
         }
+        System.out.println("In that moment you feel your eyelids grow very heavy and suddenly-");
+        System.out.println("*THUD*");
+    }
 
     private static void ghostFight (User user, Scanner scanner) {
         if (user.hasItem("Weapon")) {
