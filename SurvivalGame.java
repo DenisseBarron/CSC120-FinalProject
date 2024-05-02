@@ -7,12 +7,10 @@ public class SurvivalGame {
 
     public static void main(String[] args) {
         // Introduction to the game
-        //boolean game = true; // run game
         System.out.println("**");
         System.out.println("SURVIVAL");
         System.out.println("**");
 
-        // Scanner userInput = new Scanner(System.in);
 
         // Game initialization
         System.out.println("You wake up to the smell of rain.");
