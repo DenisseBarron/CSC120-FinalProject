@@ -13,6 +13,10 @@ public class User {
         this.location = "location";
     }
 
+    public int getHealth() {
+        return health;
+    }
+    
     public void userDetails (){
         System.out.println(name + ", you current health level is of: " + health + " hearts");
     }

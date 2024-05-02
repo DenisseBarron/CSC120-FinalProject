@@ -511,7 +511,7 @@ public class SurvivalGame {
                 System.out.println("Do you want to keep attacking? Warning: This may be fatal.");
                 String choice2 = scanner.nextLine().toLowerCase();
                 if (choice2.equals("yes")){
-                    user.decreaseHealth(5);
+                    user.decreaseHealth(10);
                     System.out.println("You're dead! And now you haunt Campers Hallow too.");
                 } else {
                     System.out.println("Good choice! You throw your weapon down.");
@@ -527,6 +527,11 @@ public class SurvivalGame {
             System.out.println("*BAM*");
             user.decreaseHealth(10);
             System.out.println("Who fights a ghost without a weapon?! You're dead! And now you haunt Campers Hallow too.");
+        }
+
+        if (user.getHealth() <= 0){
+            gameOver(user);
+            return;
         }
     }
 
@@ -610,8 +615,13 @@ public class SurvivalGame {
         if (tent.hasBatteries() && kitchen.hasTinfoil() && lockers.hasRadio()) {
             System.out.println("Congratulations! You've collected all essential items.");
         } else {
+            user.decreaseHealth(10);
             System.out.println("You failed to collect all the items needed.");
             // Handle game over or other consequences here...
+        }
+        if (user.getHealth() <= 0){
+            gameOver(user);
+            return;
         }
     }
 
@@ -619,6 +629,11 @@ public class SurvivalGame {
         System.out.println("6 days. It's been 6 days since this craziness began. You've searched for food, survived a fire, encountered a ghost, and have finally collected what you need to leave!");
         System.out.println("");
 
+    }
+
+    public static void gameOver(User user){
+        System.out.println("GAME OVER");
+        System.exit(0); // End game
     }
         // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
         // no seek shelter --> struck by lightening!
