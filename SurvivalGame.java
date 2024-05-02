@@ -42,6 +42,9 @@ public class SurvivalGame {
             System.out.println("DAY 4");
             executeDayFour(user);
 
+            System.out.println("DAY 5");
+            executeDayFive(user, scanner);
+
         } else {
             System.out.println("OK then...");
         }
@@ -503,9 +506,74 @@ public class SurvivalGame {
             System.out.println("Who fights a ghost without a weapon?! You're dead! And now you haunt Campers Hallow too.");
         }
     }
-        // day 5 - helping ghost took energy 
-        // recover and discover new items! (added to tent, kitchen, and lockers)
-        // no discovery of new items --> stuck there for long time!
+
+    private static void executeDayFive(User user, Scanner scanner) {
+        System.out.println("After the helping the gohst, you are tired and dehydrated.\n" +
+        "Go to the lake to get water...");
+        
+        // Display current health status before prompting to drink water
+        user.userDetails(); // Display current health
+        
+        // Explore the lake to find water
+        Lake lake = new Lake();
+        boolean foundWater = lake.explore(user);
+        
+        // If water is found, prompt the user to drink it for health gain
+        if (foundWater) {
+            System.out.println("You found water at the lake. Would you like to drink it to regain health? (yes/no)");
+            String drinkChoice = scanner.nextLine().toLowerCase();
+        
+            if (drinkChoice.equals("yes")) {
+                user.increaseHealth(3); // Gain 3 hearts of health by drinking water
+                System.out.println("You drank water and regained 3 hearts of health.");
+            } else {
+                System.out.println("You decided not to drink the water.");
+                user.decreaseHealth(1); // Lose 1 heart due to not drinking water
+            }
+        } else {
+            System.out.println("You didn't find any water at the lake.");
+            System.out.println("Your health decreases by 1 heart due to thirst.");
+            user.decreaseHealth(1); // Lose 1 heart due to not finding water
+        }
+        
+        // Explore the tent, kitchen, and lockers for specific items
+        Tent tent = new Tent();
+        Kitchen kitchen = new Kitchen();
+        Lockers lockers = new Lockers();
+        
+        // Prompt user to choose which place to explore first
+        System.out.println("Choose a place to explore first: (1) Tent, (2) Kitchen, (3) Lockers");
+        
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline after nextInt()
+        
+        switch (choice) {
+            case 1:
+                boolean foundBatteries = tent.exploreDay5(user);
+                break;
+            case 2:
+                boolean foundTinfoil = kitchen.exploreDay5(user);
+                break;
+            case 3:
+                boolean foundRadio = lockers.exploreDay5(user);
+                break;
+            default:
+                System.out.println("Invalid choice.");
+                break;
+            }
+        
+        // Check if all required items are collected
+        if (foundBatteries && foundTinfoil && foundRadio) {
+            System.out.println("Congratulations! You've collected all essential items.");
+            // Additional game logic or story progression here...
+        } else {
+            System.out.println("You failed to collect all the items needed.");
+            // Handle game over or other consequences here...
+        }
+    }
+        
+    
+    
         // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
         // no seek shelter --> struck by lightening!
         // day 7 - calm after the storm, beautiful day, and able to contact help!

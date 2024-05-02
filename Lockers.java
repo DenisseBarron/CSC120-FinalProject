@@ -19,4 +19,19 @@ public class Lockers {
         return false; // Warm clothes not collected
         }
     }
+    public boolean exploreDay5(User user) {
+        System.out.println("You are inside the lockers. You notice a radio hidden in one of the lockers.");
+        System.out.println("Would you like to pick it up? (yes/no)");
+        String choice = scanner.next();
+
+        // Handle user's choice
+        if (choice.equalsIgnoreCase("yes")) {
+            user.useraddInventory("Radio");
+            System.out.println("Radio has been added to your inventory.");
+            return true; // Radio collected
+        } else {
+            System.out.println("You decided not to pick up the radio...");
+            return false; // Radio not collected
+        }
+    }
 }

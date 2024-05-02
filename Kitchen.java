@@ -70,5 +70,20 @@ public class Kitchen {
                item.equalsIgnoreCase("marshmallows") ||
                item.equalsIgnoreCase("spam"); 
     }
+    public boolean exploreDay5(User user) {
+        System.out.println("You are inside the kitchen. You notice a roll of tinfoil on the counter.");
+        System.out.println("Would you like to take it? (yes/no)");
+        String choice = scanner.next();
+
+        // Handle user's choice
+        if (choice.equalsIgnoreCase("yes")) {
+            user.useraddInventory("Tinfoil");
+            System.out.println("Tinfoil has been added to your inventory.");
+            return true; // Tinfoil collected
+        } else {
+            System.out.println("You decided not to take the tinfoil...");
+            return false; // Tinfoil not collected
+        }
+    }
 }
  
