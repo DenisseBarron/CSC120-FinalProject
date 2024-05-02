@@ -165,13 +165,13 @@ public class SurvivalGame {
             user.useraddInventory("Matches");
 
             // Stepping on a sharp piece of wood
-            System.out.println("While searching for matches, you accidentally step in a sharp piece of wood.");
+            System.out.println("While searching for matches, you accidentally step on a sharp piece of wood.");
             user.decreaseHealth(1); // Lose 1 heart due to injury
         }
 
         // Check if user needs food
         if (!user.hasFood()){
-            System.out.println("Since you did not collect any food in Day 1... \n" +
+            System.out.println("Since you did not collect any food on Day 1... \n" +
             "Let's explore the kitchen.");
             exploreKitchen(user, scanner);
         }
@@ -182,7 +182,7 @@ public class SurvivalGame {
             if (foodType != null){
                 int healthGain = user.calculateHealthGain(foodType);
                 user.increaseHealth(healthGain);
-                System.out.println("You cooked " + foodType + " . Health increased by " + healthGain + " hearts.");
+                System.out.println("You cooked " + foodType + ". Health increased by " + healthGain + " hearts.");
             }
         }
 
@@ -362,7 +362,7 @@ public class SurvivalGame {
     private static void executeDayFour(User user) {
         System.out.println("It's been 4 days since you were left by your group.");
         System.out.println("During the day, it's difficult to accept the cruel hand the universe has dealt you,\n" +
-        "but when the sun goes down, it becomes almost unbearable. Not only that, it's cold!");
+        "but when the sun goes down, it becomes almost unbearable. Not only that, but it's freezing!");
     
         if (user.hasItem("Warm clothes")) {
             System.out.println("You have some warm clothes in your inventory.");
@@ -408,7 +408,7 @@ public class SurvivalGame {
                 System.out.println("Nice! You have the necessary items to get a fire going! And just in time too. It's dark out.");
                 user.increaseHealth(1);
                 System.out.println("Feeling the warmth of the fire, you start to get drowsy. However, before you can let yourself go, you begin to register \n" +
-                "the severity of your situation and a pang of anxiety soars throughout your entire body.");
+                "the severity of your situation and a pang of anxiety soars throughout your entire body. You sit there thinking when-");
             }
         } else {
             user.decreaseHealth(1);
@@ -623,11 +623,15 @@ public class SurvivalGame {
             gameOver(user);
             return;
         }
+        System.out.println("Here is your status after Day 5:");
+        user.userDetails();
+        user.printInventory();
     }
 
     private static void executeDaySix(User user){
         System.out.println("6 days. It's been 6 days since this craziness began. You've searched for food, survived a fire, encountered a ghost, and have finally collected what you need to leave!");
-        System.out.println("");
+        System.out.println("Using the items from the previous day you get to work and place the batteries into the radio, using the tin foil to improve your connection.");
+        System.out.println("At first you only hear static, but soon voices begin to emerge.");
 
     }
 
