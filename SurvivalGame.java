@@ -428,7 +428,7 @@ public class SurvivalGame {
         System.out.println("\033[3mA friend!\033[0m");
         System.out.println("Before you can think any further, you dash into the woods frantically looking for your 'friend'.");
         System.out.println("What you find instead is a dreadful sight: A young man holding a lantern is staring directly at you. His skin is pale and he's wearing a tattered red shirt with the words 'Campers Hallow' on it. 'Help,' he croaks before taking a step towards you and aggressively reaches to touch your arm.");  
-        System.out.println("Do you help or fight him off?");
+        System.out.println("Do you help or fight him off? Type 'help' or 'fight'.");
 
         boolean validChoice = false;
         while (!validChoice) {
