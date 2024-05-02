@@ -478,7 +478,6 @@ public class SurvivalGame {
     }
 
     private static void ghostHelp (User user, Scanner scanner) {
-        // help ghost -- ask him what went wrong -- storytime -- recover idk 
         System.out.println("You let yourself relax when you realize the ghost is crying. His hand barely grazes your arm, but you can feel how clammy and cold his skin is. 'What's wrong?' you ask.");
         System.out.println("'I don't know what to do! My group left me and it feels like I've been looking for them forever. No one has ever come back for me,' he manages to say in between sobs.");
         System.out.println("It dawns on you that this man is in the exact position as you, or was. 'What's your name?' you ask again.");
@@ -635,9 +634,10 @@ public class SurvivalGame {
         System.out.println("'You are lucky to be alive,' says one of them...");
         gameOver(user);
         // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
-        // no seek shelter --> struck by lightening!
+        // no seek shelter --> struck by lightening, die!
     }
-            // day 7 - calm after the storm, beautiful day, and able to contact help!
+    
+    // day 7 - calm after the storm, beautiful day, and able to contact help!
 
     public static void gameOver(User user){
         System.out.println("\n"+
