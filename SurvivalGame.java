@@ -634,7 +634,7 @@ public class SurvivalGame {
         System.out.println("At first you only hear static, but soon voices begin to emerge.");
         System.out.println("They ask you about your location, name, age and group of hikers you were with.");
         System.out.println("Soon after a rescue teams finds you.");
-        System.out.println("'You are lucky to be alive' says one of them...");
+        System.out.println("'You are lucky to be alive,' says one of them...");
         gameOver(user);
         // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
         // no seek shelter --> struck by lightening!
