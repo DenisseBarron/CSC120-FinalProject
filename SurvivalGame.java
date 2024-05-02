@@ -42,8 +42,13 @@ public class SurvivalGame {
             System.out.println("DAY 4");
             executeDayFour(user);
 
+            // Day 5
             System.out.println("DAY 5");
             executeDayFive(user, scanner);
+
+            // Day 6
+            System.out.println("DAY 6");
+            executeDaySix(user);
 
         } else {
             System.out.println("OK then...");
@@ -439,6 +444,9 @@ public class SurvivalGame {
                 System.out.println("Please type 'help' or 'fight'.");
             }
         }
+        System.out.println("Here is your status after Day 4:");
+        user.userDetails();
+        user.printInventory();
     }
 
     private static void exploreLocationsForDayFour (User user, Scanner scanner) {
@@ -586,6 +594,14 @@ public class SurvivalGame {
             // Handle game over or other consequences here...
         }
     }
+
+    private static void executeDaySix(User user){
+
+
+
+    }
+
+
         
     
     
