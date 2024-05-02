@@ -596,15 +596,10 @@ public class SurvivalGame {
     }
 
     private static void executeDaySix(User user){
-
-
+        System.out.println("6 days. It's been 6 days since this craziness began. You've searched for food, survived a fire, encountered a ghost, and have finally collected what you need to leave!");
+        System.out.println("");
 
     }
-
-
-        
-    
-    
         // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
         // no seek shelter --> struck by lightening!
         // day 7 - calm after the storm, beautiful day, and able to contact help!
