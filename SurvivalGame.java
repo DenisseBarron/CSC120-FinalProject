@@ -7,6 +7,7 @@ public class SurvivalGame {
 
     public static void main(String[] args) {
         // Introduction to the game
+        //boolean game = true; // run game
         System.out.println("**");
         System.out.println("SURVIVAL");
         System.out.println("**");
@@ -24,7 +25,7 @@ public class SurvivalGame {
         if (userResponse.equals("YES")) {
             User user = initializeUser(); //userInput
             Backstage backstage = new Backstage();
-
+            
             // Day 1
             System.out.println("DAY 1");
             executeDayOne(user, backstage);
@@ -49,7 +50,6 @@ public class SurvivalGame {
             // Day 6
             System.out.println("DAY 6");
             executeDaySix(user);
-
         } else {
             System.out.println("OK then...");
         }
