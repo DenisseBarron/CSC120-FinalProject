@@ -553,41 +553,61 @@ public class SurvivalGame {
         } else {
             System.out.println("You didn't collect any water at the lake.");
             System.out.println("Your health decreases by 1 heart due to thirst.");
-            user.decreaseHealth(1); // Lose 1 heart due to not finding water
+            user.decreaseHealth(1); // Lose 1 heart due to not collecting water
         }
-        
+
+        System.out.println("You remember what George said about the things you might need...");
+        System.out.println("He mentioned you would find them in the kitchen, tent, or lockers...");
+
         // Explore the tent, kitchen, and lockers for specific items
         Tent tent = new Tent();
         Kitchen kitchen = new Kitchen();
         Lockers lockers = new Lockers();
 
-        boolean foundBatteries = false;
-        boolean foundTinfoil = false;
-        boolean foundRadio = false;
-        
-        // Prompt user to choose which place to explore first
-        System.out.println("Choose a place to explore first: (1) Tent, (2) Kitchen, (3) Lockers");
-        
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline after nextInt()
-        
-        switch (choice) {
-            case 1:
-                foundBatteries = tent.exploreDay5(user);
-                break;
-            case 2:
-                foundTinfoil = kitchen.exploreDay5(user);
-                break;
-            case 3:
-                foundRadio = lockers.exploreDay5(user);
-                break;
-            default:
-                System.out.println("Invalid choice.");
-                break;
+        boolean visitedTent = false;
+        boolean visitedKitchen = false;
+        boolean visitedLockers = false;
+
+        // Explore all three locations at least once
+        while (!(visitedTent && visitedKitchen && visitedLockers)) {
+            System.out.println("Choose a place to explore: (1) Tent, (2) Kitchen, (3) Lockers");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline after nextInt()
+
+            switch (choice) {
+                case 1:
+                    if (!visitedTent) {
+                        visitedTent = true;
+                        tent.exploreDay5(user); // Explore the tent
+                    } else {
+                        System.out.println("You've already explored the Tent.");
+                    }
+                    break;
+                case 2:
+                    if (!visitedKitchen) {
+                        visitedKitchen = true;
+                        kitchen.exploreDay5(user); // Explore the kitchen
+                    } else {
+                        System.out.println("You've already explored the Kitchen.");
+                    }
+                    break;
+                case 3:
+                    if (!visitedLockers) {
+                        visitedLockers = true;
+                        lockers.exploreDay5(user); // Explore the lockers
+                    } else {
+                        System.out.println("You've already explored the Lockers.");
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
             }
+        }
         
         // Check if all required items are collected
-        if (foundBatteries && foundTinfoil && foundRadio) {
+        if (tent.hasBatteries() && kitchen.hasTinfoil() && lockers.hasRadio()) {
             System.out.println("Congratulations! You've collected all essential items.");
         } else {
             System.out.println("You failed to collect all the items needed.");
