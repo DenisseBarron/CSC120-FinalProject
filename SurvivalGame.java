@@ -534,16 +534,13 @@ public class SurvivalGame {
         System.out.println("After the helping the gohst, you are tired and dehydrated.\n" +
         "Go to the lake to get water...");
         
-        // Display current health status before prompting to drink water
-        user.userDetails(); // Display current health
-        
         // Explore the lake to find water
         Lake lake = new Lake();
         boolean foundWater = lake.explore(user);
         
         // If water is found, prompt the user to drink it for health gain
         if (foundWater) {
-            System.out.println("You found water at the lake. Would you like to drink it to regain health? (yes/no)");
+            System.out.println("You collected water at the lake. Would you like to drink it to regain health? (yes/no)");
             String drinkChoice = scanner.nextLine().toLowerCase();
         
             if (drinkChoice.equals("yes")) {
@@ -554,7 +551,7 @@ public class SurvivalGame {
                 user.decreaseHealth(1); // Lose 1 heart due to not drinking water
             }
         } else {
-            System.out.println("You didn't find any water at the lake.");
+            System.out.println("You didn't collect any water at the lake.");
             System.out.println("Your health decreases by 1 heart due to thirst.");
             user.decreaseHealth(1); // Lose 1 heart due to not finding water
         }
@@ -563,6 +560,10 @@ public class SurvivalGame {
         Tent tent = new Tent();
         Kitchen kitchen = new Kitchen();
         Lockers lockers = new Lockers();
+
+        boolean foundBatteries = false;
+        boolean foundTinfoil = false;
+        boolean foundRadio = false;
         
         // Prompt user to choose which place to explore first
         System.out.println("Choose a place to explore first: (1) Tent, (2) Kitchen, (3) Lockers");
@@ -572,13 +573,13 @@ public class SurvivalGame {
         
         switch (choice) {
             case 1:
-                boolean foundBatteries = tent.exploreDay5(user);
+                foundBatteries = tent.exploreDay5(user);
                 break;
             case 2:
-                boolean foundTinfoil = kitchen.exploreDay5(user);
+                foundTinfoil = kitchen.exploreDay5(user);
                 break;
             case 3:
-                boolean foundRadio = lockers.exploreDay5(user);
+                foundRadio = lockers.exploreDay5(user);
                 break;
             default:
                 System.out.println("Invalid choice.");
@@ -588,7 +589,6 @@ public class SurvivalGame {
         // Check if all required items are collected
         if (foundBatteries && foundTinfoil && foundRadio) {
             System.out.println("Congratulations! You've collected all essential items.");
-            // Additional game logic or story progression here...
         } else {
             System.out.println("You failed to collect all the items needed.");
             // Handle game over or other consequences here...
