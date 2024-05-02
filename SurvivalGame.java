@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class SurvivalGame {
     private static final Scanner scanner = new Scanner(System.in);
     public static final int MAX_ITEMS = 3;
+    public static final int MAX2_ITEMS = 2;
 
     public static void main(String[] args) {
         // Introduction to the game
@@ -10,7 +11,7 @@ public class SurvivalGame {
         System.out.println("SURVIVAL");
         System.out.println("**");
 
-        Scanner userInput = new Scanner(System.in);
+        // Scanner userInput = new Scanner(System.in);
 
         // Game initialization
         System.out.println("You wake up to the smell of rain.");
@@ -18,13 +19,11 @@ public class SurvivalGame {
         System.out.println("There's something else too... it's quiet... too quiet.");
         System.out.println("Where is everyone?");
         System.out.println("Type 'yes' to continue...");
-        String userResponse = userInput.nextLine().toUpperCase();
+        String userResponse = scanner.nextLine().toUpperCase(); //userInput.
 
         if (userResponse.equals("YES")) {
-            User user = initializeUser(userInput);
+            User user = initializeUser(); //userInput
             Backstage backstage = new Backstage();
-
-
 
             // Day 1
             System.out.println("DAY 1");
@@ -47,13 +46,13 @@ public class SurvivalGame {
             System.out.println("OK then...");
         }
 
-        userInput.close();
+        // userInput.close();
         scanner.close();
     }
 
-    private static User initializeUser(Scanner userInput) {
+    private static User initializeUser() { //Scanner userInput
         System.out.println("Hello brave user. What's your name?");
-        String userName = userInput.nextLine();
+        String userName = scanner.nextLine(); //userInput
         User user = new User(userName);
         user.userDetails();
 
@@ -252,6 +251,8 @@ public class SurvivalGame {
 
                 if (choice.equals("yes")){
                     user.removeItem("Water");
+                    user.removeItem("Matches");
+                    user.removeItem("Wood");
                     System.out.println("You used water to extinguish the fire. It is no longer in your inventory.");
             } else {
                 System.out.println("You chose not to use water. Instead, you have to fan the fire out, causing you to lose energy");
@@ -357,13 +358,13 @@ public class SurvivalGame {
     
         if (user.hasItem("Warm clothes")) {
             System.out.println("You have some warm clothes in your inventory.");
-            System.out.println("Would you like to put them on? (yes/no)");
+            System.out.println("Would you like to put them on?");
     
             String response = scanner.nextLine();
 
             // Validate user input
             while (!response.equals("yes") && !response.equals("no")) {
-                System.out.println("Invalid response. Please enter 'yes' or 'no'.");
+                System.out.println("(yes/no)");
                 response = scanner.nextLine().trim().toLowerCase();
             }
     
@@ -380,8 +381,9 @@ public class SurvivalGame {
             user.decreaseHealth(1);
         }
 
-        System.out.println("It's chilly and nightfall is nearing.\n" +
-        "Would you like to get a fire going?"); // NOT TAKING IN USER RESPONSE FIX
+        System.out.println("It's chilly and nightfall is nearing.");
+        System.out.println("Would you like to get a fire going? (yes/no)"); // NOT TAKING IN USER RESPONSE FIX
+
         String response = scanner.nextLine().toLowerCase();
 
         if (response.equals("yes")){
@@ -395,11 +397,11 @@ public class SurvivalGame {
             } else {
                 user.removeItem("Matches");
                 user.removeItem("Wood");
+                System.out.println("Nice! You have the necessary items to get a fire going! And just in time too. It's dark out.");
+                user.increaseHealth(1);
+                System.out.println("Feeling the warmth of the fire, you start to get drowsy. However, before you can let yourself go, you begin to register \n" +
+                "the severity of your situation and a pang of anxiety soars throughout your entire body.");
             }
-            System.out.println("Nice! You have the necessary items to get a fire going! And just in time too. It's dark out.");
-            user.increaseHealth(1);
-            System.out.println("Feeling the warmth of the fire, you start to get drowsy. However, before you can let yourself go, you begin to register \n" +
-            "the severity of your situation and a pang of anxiety soars throughout your entire body.");
         } else {
             user.decreaseHealth(1);
             System.out.println("It's dark out. Now you're really cold and begin to shiver, rocking back and forth when out of nowhere-");
@@ -418,16 +420,21 @@ public class SurvivalGame {
         System.out.println("\033[3mA friend!\033[0m");
         System.out.println("Before you can think any further, you dash into the woods frantically looking for your 'friend'.");
         System.out.println("What you find instead is a dreadful sight: A young man holding a lantern is staring directly at you. His skin is pale and he's wearing a tattered red shirt with the words 'Campers Hallow' on it. 'Help,' he croaks before taking a step towards you and aggressively reaches to touch your arm.");  
-        System.out.println("Do you help or fight him off? (type 'help' or 'fight')");
-        String choice = scanner.nextLine().toLowerCase();
+        System.out.println("Do you help or fight him off?");
 
-        if (choice.equals("help")){
-            ghostHelp(user, scanner);
-        }
-        else if (choice.equals("fight")){
-            ghostFight(user, scanner);
-        } else {
-            System.out.println("Invalid option.");
+        boolean validChoice = false;
+        while (!validChoice) {
+            String choice = scanner.nextLine().toLowerCase();
+            
+            if (choice.equals("help")){
+                ghostHelp(user, scanner);
+                validChoice = true; // Exit lopp of choice is valid
+            } else if (choice.equals("fight")){
+                ghostFight(user, scanner); 
+                validChoice = true; // Exit loop if choice is valid
+            } else {
+                System.out.println("Please type 'help' or 'fight'.");
+            }
         }
     }
 
@@ -435,7 +442,7 @@ public class SurvivalGame {
         int itemsCollected = 0;
 
         // Main loop to choose locations until all items are collected
-        while (itemsCollected < MAX_ITEMS) {
+        while (itemsCollected < MAX2_ITEMS) {
             // User chooses a location
             System.out.println("Choose a place to explore: (1) Woods, (2) Firepit");
             int choice = scanner.nextInt();
