@@ -41,7 +41,7 @@ public class User {
         if (health > 0) {
             health -= amount;
             if (health <= 0){
-                System.out.println("Your health has reached zerio. Game over!");
+                System.out.println("Your health has reached zero. Game over!");
                 //Implement game over here, idk how yet
             } else {
                 System.out.println("You lost " + amount + " hearts. Your current health is " + health + " hearts.");
