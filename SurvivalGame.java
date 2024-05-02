@@ -632,7 +632,14 @@ public class SurvivalGame {
     }
 
     public static void gameOver(User user){
-        System.out.println("GAME OVER");
+        System.out.println("\n"+
+          " ╭━━━━┳╮╱╭┳━━━╮╭━━━┳━╮╱╭┳━━━╮ \n"+
+          " ┃╭╮╭╮┃┃╱┃┃╭━━╯┃╭━━┫┃╰╮┃┣╮╭╮┃ \n"+
+          " ╰╯┃┃╰┫╰━╯┃╰━━╮┃╰━━┫╭╮╰╯┃┃┃┃┃ \n"+
+          " ╱╱┃┃╱┃╭━╮┃╭━━╯┃╭━━┫┃╰╮┃┃┃┃┃┃ \n"+
+          " ╱╱┃┃╱┃┃╱┃┃╰━━╮┃╰━━┫┃╱┃┃┣╯╰╯┃ \n"+
+          " ╱╱╰╯╱╰╯╱╰┻━━━╯╰━━━┻╯╱╰━┻━━━╯");
+        //System.out.println("GAME OVER");
         System.exit(0); // End game
     }
         // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
