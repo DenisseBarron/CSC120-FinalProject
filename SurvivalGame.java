@@ -518,7 +518,6 @@ public class SurvivalGame {
             System.out.println("Who fights a ghost without a weapon?! You're dead! And now you haunt Campers Hallow too.");
         }
     }
-
         // day 5 - helping ghost took energy 
         // recover and discover new items! (added to tent, kitchen, and lockers)
         // no discovery of new items --> stuck there for long time!
