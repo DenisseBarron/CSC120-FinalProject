@@ -634,12 +634,9 @@ public class SurvivalGame {
         System.out.println("Soon after a rescue teams finds you.");
         System.out.println("'You are lucky to be alive,' says one of them...");
         gameOver(user);
-        // day 6 - trying to set up new items, but massive storm makes you seek shelter (in lockers, showers, ot backstage)
-        // no seek shelter --> struck by lightening, die!
+
     }
     
-    // day 7 - calm after the storm, beautiful day, and able to contact help!
-
     public static void gameOver(User user){
         System.out.println("\n"+
           " ╭━━━━┳╮╱╭┳━━━╮╭━━━┳━╮╱╭┳━━━╮ \n"+
